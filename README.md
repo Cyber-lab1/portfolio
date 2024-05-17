@@ -18,13 +18,14 @@ I'm Yazan Hwedi, a passionate Cybersecurity Specialist dedicated to protecting d
 ## Certifications
 
 - [C|EH] - Certified Ethical Hacker
-- [P|NPT] - Penetration Testing Professional
+- [C|PENT] - Penetration Testing Professional
 
 ## Contact
 
 If you're interested in collaborating on projects or discussing opportunities, feel free to reach out to me:
 
 - LinkedIn: [https://www.linkedin.com/in/blacklioncoder/]
+- Portfolio: [https://cyber-lab1.github.io/portfolio/]
 
 I'm excited to connect with you!
 
