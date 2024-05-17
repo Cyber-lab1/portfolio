@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazan Hwedi - Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff6a00, #004777);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 40px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.5s ease;
+        }
+
+        header.scroll {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        nav {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.5s ease;
+        }
+
+        nav.scroll {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 120px;
+        }
+
+        .section-heading {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            color: #fff;
+        }
+
+        .section-content {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .contact-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-icon:hover {
+            background-color: #ddd;
+        }
+
+        .contact-icon i {
+            font-size: 20px;
+            color: #555;
+        }
+
+        .section-content p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        body.dark-mode {
+            background: #121212;
+            color: #ffffff;
+        }
+
+        body.dark-mode header,
+        body.dark-mode footer {
+            background-color: #1c1c1c;
+        }
+
+        body.dark-mode .section-content {
+            background-color: rgb(5, 5, 5);
+        }
+
+        body.dark-mode a {
+            color: #76b5c5;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            color: #070707;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 2000;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #ddd;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        header,
+        nav,
+        .section-heading,
+        .btn {
+            animation: fadeIn 1s;
+        }
+
+        #callback-form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #ff6a00;
+        }
+
+        button[type="submit"] {
+            background-color: #ff6a00;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ff5722;
+        }
+
+        #success-message {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .contact-info a i {
+            margin-right: 5px;
+        }
+
+        .contact-info span {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+
+        /* GIF Icon Animation */
+        .gif-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        .section-heading img {
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .contact-icons img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Yazan Hwedi</h1>
+        <p>Professional Portfolio</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#resume">Resume</a>
+    </nav>
+
+    <div class="container" id="about">
+        <section>
+            <h2 class="section-heading">About Me <img src="https://media.giphy.com/media/L3KikQKFFN1wErdxG1/giphy.gif" alt="star gif" class="gif-icon"></h2>
+            <div class="section-content">
+                <p><b>Greetings!</b> I'm Yazan Hwedi, a <b>passionate Cybersecurity Specialist</b> dedicated to safeguarding digital assets in today's ever-evolving landscape. With over [1 years] of experience in cybersecurity, I've had the privilege of <b>protecting information systems, networks, and data</b> against an array of evolving threats.
+
+                    My expertise encompasses <b>comprehensive threat detection and analysis</b>, meticulous <b>risk assessment</b>, rigorous <b>penetration testing</b>, swift <b>incident response</b>, and ensuring adherence to <b>regulatory compliance standards.</b>
+                    
+                    I thrive in dynamic environments where I can leverage my technical acumen to proactively mitigate risks and bolster cybersecurity resilience. Noteworthy accomplishments include spearheading impactful cybersecurity initiatives, such as implementing robust security protocols that led to a notable [100%] reduction in security incidents.
+                    
+                    Furthermore, my certifications in [C|EH] and [C|PENT] underscore my unwavering dedication to staying abreast of industry best practices and standards.</p>
+            </div>
+        </section>
+    </div>
+
+    <div class="container" id="contact">
+        <section>
+            <h2 class="section-heading">Contact <img src="https://media.giphy.com/media/l41YdUhaxR8C1ID0U/giphy.gif" alt="contact gif" class="gif-icon"></h2>
+            <div class="section-content">
+                <div id="callback-form">
+                    <h2>Contact Me</h2>
+                    <form id="contact-form" action="https://formspree.io/f/mpzvneql" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="contact-icons">
+                <a href="https://www.linkedin.com/in/blacklioncoder/" class="contact-icon">
+                    <img src="https://media.giphy.com/media/hp3dmEypS0FaHwxG0c/giphy.gif" alt="LinkedIn">
+                </a>
+                <a href="https://github.com/Cyber-lab1" class="contact-icon">
+                    <img src="https://media.giphy.com/media/26n6WywJyh39n1pBu/giphy.gif" alt="GitHub">
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <div class="container" id="resume">
+        <section>
+            <h2 class="section-heading">Resume <img src="https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif" alt="resume gif" class="gif-icon"></h2>
+            <div class="section-content">
+                <p>Here you can find my detailed professional experience and skills.</p>
+                <a href="Resume-Yazan-Hwedi (LinkedIn}.pdf" class="btn">Download Resume</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Yazan Hwedi. All rights reserved.</p>
+        <div class="contact-info">
+            <a href="mailto:yazanhwedi614@gmail.com"><i class="fas fa-envelope"></i><span>yazanhwedi614@gmail.com</span></a>
+            <br>
+            <a href="tel:+9720506111583"><i class="fas fa-phone"></i><span>+9720506111583</span></a>
+        </div>
+    </footer>
+
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                header.classList.add('scroll');
+                nav.classList.add('scroll');
+            } else {
+                header.classList.remove('scroll');
+                nav.classList.remove('scroll');
+            }
+        });
+    </script>
+</body>
+</html>
